@@ -1,0 +1,128 @@
+/* pages/questions/questions.wxss */
+.questionsContainer{
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f8f8;
+   height: 100%; 
+}
+.top{
+  /* background: #0068aa;  */
+}
+.reservetype{
+  font-size: 35rpx;
+  /* padding: 20rpx; */
+  font-weight: 300;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: white
+  
+}
+.type{
+  color: black;
+  padding: 20rpx 110rpx; 
+  width: 50%;
+  height: 100%;
+}
+.iconImg{
+  position: absolute;
+  height: 60rpx;
+  width: 60rpx;
+  padding-left: 60rpx;
+  top: 7rpx;
+}
+.questxt{
+  font-size: 36rpx;
+  color: black;
+   padding-left: 120rpx; 
+}
+.add{
+  /* height: 82rpx;
+  text-align: center;
+  padding: 10rpx 200rpx;
+  border: 1rpx solid red */
+  background: #0068aa; 
+  padding-bottom: 10rpx;
+}
+.addQuestion{
+  text-align: center;
+  width: 320rpx; 
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+   padding: 12rpx 10rpx; 
+  border-radius: 5rpx;
+  margin-left: 210rpx;
+  margin-bottom: 20rpx;
+}
+.quesbody{
+  padding: 25rpx;
+  margin-top: 25rpx;
+  background-color: white;
+}
+.title{
+ display: flex;
+ flex-direction: row;
+ color: #282828;
+}
+.return{
+  display: flex;
+ flex-direction: row;
+ color: #282828;
+ padding-left: 95rpx;
+ font-size: 28rpx;
+}
+.time{
+  padding-top: 10rpx;
+  padding-left: 95rpx;
+ font-size: 25rpx;
+ color: #666666;
+}
+.check01{
+  position: absolute;
+  font-size: 30rpx;
+  color: red;
+  right: 40rpx;
+  margin-top: 90rpx;
+}
+.check{
+  position: absolute;
+  font-size: 30rpx;
+  color: red;
+  right: 40rpx;
+  margin-top: 150rpx;
+}
+.check2{
+  position: absolute;
+  font-size: 30rpx;
+  color: red;
+  right: 40rpx;
+  margin-top: 100rpx;
+}
+.empty-data {
+  font-size: 15px;
+   position: relative; 
+  text-align: center;
+  margin: 40vh auto 0;
+  color: #b9b9b9;
+}
+
+.empty-data::after {
+  content: '';
+  width: 16%;
+  border-top: 1px solid #d7d7d7;
+  position: absolute;
+  right: 16%;
+  top: 50%;
+  transform: transalteY(-50%);
+}
+
+.empty-data::before {
+  content: '';
+  width: 16%;
+  border-top: 1px solid #d7d7d7;
+  position: absolute;
+  left: 16%;
+  top: 50%;
+  transform: transalteY(-50%);
+}

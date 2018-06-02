@@ -1,0 +1,80 @@
+<view class='questionsContainer'>
+  <view class='quesbody'>
+    <view class='title'>
+      <view style='padding:5rpx 20rpx;'>{{details.title}}</view>
+      <view style='margin-left:50rpx;'>
+        <view style='padding:5rpx 10rpx;font-size: 25rpx;'>{{details.content}}</view>
+        <block class='questionImg' wx:for="{{details.imgs}}" wx:for-index='img' wx:key="index">
+          <image style='height:154rpx;width:165rpx;padding-right:7rpx;' mode="aspectFill" src="{{item.url}}" bindtap="previewQuestionImage" data-index="img"></image>
+        </block>
+      </view>
+
+    </view>
+    <view class='return'>
+      <view>共{{details.replies.length}}条回复</view>
+    </view>
+    <view wx-if="{{showValue=='尚未回答'}}" class='ignore' catchtap='onIgnoreTap'>
+      <image style='height:55rpx;width:55rpx;' src='/images/icons/ignore.png'></image>
+    </view>
+  </view>
+  <view id='bottom' style='margin-bottom: 200rpx;'>
+    <view class='list' wx:for="{{details.replies}}" wx:for-index='reply' wx:key="index">
+      <view style='text-align:center'>
+        <image wx-if="{{item.custom.role=='teacher'}}" style='height:100rpx;width:100rpx;border-radius:50%;margin-left:20rpx;' src='/images/icons/teacher.png'></image>
+        <image wx-if="{{item.custom.role=='student'}}" style='height:100rpx;width:100rpx;border-radius:50%;margin-left:20rpx;' src='/images/icons/student.png'></image>
+        <view style='font-size:28rpx;color:#282828'>{{item.custom.name}}</view>
+      </view>
+
+      <view class='answer'>
+        <text>{{item.content}}</text>
+        <view style=' display: flex;flex-direction: row;'>
+          <block class='answerImg' wx:for="{{item.imgs}}" wx:for-item="img" wx:key="index">
+            <image style='height:154rpx;width:165rpx;padding-right:7rpx;' mode="aspectFill" src="{{img.url}}" bindtap="previewImage01" data-index="{{reply}}"></image>
+          </block>
+        </view>
+        <view class='time'>{{item.updatedAt}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view style="{{showChapter?'display:none':''}}">
+    <view class='body'>
+      <!-- <view class='titleInput'>
+      <input class="input" placeholder="输入标题" bindblur="titleInput" value="{{title}}" />
+    </view> -->
+      <view style="padding:20rpx;font-size:34rpx;border-bottom:1rpx solid #ededed">添加回答</view>
+      <view class='bodyInput2' style="{{showChapter?'display:none':''}}">
+        <textarea style='margin-left:10rpx;font-size: 30rpx;padding:5rpx;' bindinput="bodyInput" auto-height placeholder="输入内容" value="{{body}}" />
+      </view>
+
+
+      <view style='display:flex;flex-direction:row'>
+        <view class="weui-uploader__files" id="uploaderFiles">
+          <block wx:for="{{photos}}" wx:for-index='photo' wx:key="index">
+            <view class="weui-uploader__file  pre-img" bindtap="previewImage02" data-index="{{photo}}">
+              <a class="btn danger del mini pre-del" catchtap="deleteImg" data-index="{{index}}">
+                <image style="width:15px;height:15px;" mode="widthFix" src="/images/icons/de_w.png" />
+              </a>
+              <image class="weui-uploader__img" src="{{item.url}}" mode="aspectFill" />
+            </view>
+          </block>
+        </view>
+        <view class="weui-uploader__input-box">
+          <view class="weui-uploader__input" bindtap="chooseImage"></view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+  <view class='save' catchtap='onNextTap' data-add="{{add}}">{{add}}</view>
+</view>
+
+
+<view class="modal-box" hidden="{{ignore}}" bindtap="hide">
+  <view class="modal-body">
+    <view class="modal-content">
+      <button bindtap="logoutConfirm">忽略此问题</button>
+      <button class="cancel" bindtap="hide">取消</button>
+    </view>
+  </view>
+</view>

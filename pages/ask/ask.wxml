@@ -1,0 +1,74 @@
+<view class='topContainer'>
+  <view class='classify'>
+    <view class='choose' catchtap='onChangeShowState'>选择</view>
+    <view class='chooseClassify'>{{chooseChapter}}</view>
+  </view>
+
+  <view class='body'>
+    <view class='titleInput'>
+      <input class="input" placeholder="输入标题" bindblur="titleInput" value="{{title}}" />
+    </view>
+    <view class='bodyInput' style="{{showChapter?'display:none':''}}">
+      <textarea style='margin-left:10rpx;font-size: 30rpx;padding:5rpx;' bindinput="bodyInput" auto-height placeholder="输入内容" value="{{body}}" />
+    </view>
+
+    <view style='display:flex;flex-direction:row'>
+      <view class="weui-uploader__files" id="uploaderFiles">
+        <block wx:for="{{photos}}" wx:key="index">
+          <view class="weui-uploader__file  pre-img" bindtap="previewImage" data-index="index">
+            <a class="btn danger del mini pre-del" catchtap="deleteImg" data-index="{{index}}">
+              <image style="width:15px;height:15px;" mode="widthFix" src="/images/icons/de_w.png" />
+            </a>
+            <image class="weui-uploader__img" src="{{item.url}}" mode="aspectFill" />
+          </view>
+        </block>
+      </view>
+      <view class="weui-uploader__input-box">
+        <view class="weui-uploader__input" bindtap="chooseImage"></view>
+      </view>
+    </view>
+
+  </view>
+  <view class='next' catchtap='onNextTap'>下一步</view>
+</view>
+
+<view class="{{showChapter?'view_show2':'view_hide2'}}">
+  <view class="popup-wrapper2" bindtap="onChangeShowState"></view>
+  <view class="popup-left2">
+    <view class="kind-list">
+      <block wx:for-items="{{chapter}}" wx:for-index="chapterIndex" wx:key="{{item.name}}">
+        <view class="kind-list__item">
+          <view class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" data-type="chapter" data-index="{{chapterIndex}}" bindtap="kindToggle">
+            <view class="weui-flex__item2">{{item.name}}</view>
+            <view wx:if="{{item.list.length}}" class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </view>
+          <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+            <view style='margin-left:20px;' class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+
+
+              <!-- //地区 -->
+              <block wx:if="{{chapterIndex===1}}" wx:for-items="{{chapterList}}" wx:for-item="chapter" wx:key="{{chapter.id}}">
+                <view class="kind-list__item">
+                  <view class="weui-flex kind-list__item-hd {{chapter.open ? 'kind-list__item-hd_show' : ''}}" data-type="area" data-index="{{index}}" bindtap="kindToggle">
+                    <view class="weui-flex__item2">{{chapter.name}}</view>
+                    <view wx:if="{{chapter.subClassifies.length}}" class="weui-cell__ft weui-cell__ft_in-access"></view>
+                  </view>
+                  <view class="kind-list__item-bd {{chapter.open ? 'kind-list__item-bd_show' : ''}}">
+                    <view style='margin-left:20px;' class="weui-cells {{chapter.open ? 'weui-cells_show' : ''}}">
+                      <block wx:for-items="{{chapter.subClassifies}}" wx:for-index="chapterIndex" wx:for-item="subchapter" wx:key="{{subchapter.id}}">
+                        <view class="weui-cell weui-cell_access2">
+                          <view data-name="{{chapter.name + ' | ' + subchapter.name}}" data-index="{{index + '-' + chapterIndex}}" data-type="chapter" data-classifyId="{{subchapter.id}}" class="weui-cell__bd2" bindtap="subChapter">{{subchapter.name}}</view>
+                        </view>
+                      </block>
+                    </view>
+                  </view>
+                </view>
+              </block>
+
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

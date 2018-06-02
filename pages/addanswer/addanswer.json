@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "添加回答",
+  "navigationBarBackgroundColor": "#61dcf7",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "footer": "/components/footer/footer"
+  }
+}

@@ -1,0 +1,32 @@
+<view class='chooseContainer'>
+  <view class='describe'>
+    <view>恭喜问题已记录！</view>
+    <view style='margin-top:10rpx;'>请选择老师回复此问题</view>
+  </view>
+
+  <view class='action'>
+      <text style='padding-left:190rpx;' catchtap='onCheckTap'>查看所有问题</text>
+    
+      <text style='padding-left:60rpx;' catchtap='onAskContinue'>继续提问</text>
+  </view>
+
+  <view class='body'>
+    <view style='font-size:38rpx;color:#484848'>邀请教师</view>
+    <scroll-view scroll-y="true" style="height:650rpx;width:100%;">
+      <view class='teacherMsg' wx:for='{{teachList}}'>
+        <image style='height:120rpx;width:120rpx;border-radius:50%' src='/images/icons/teacher.png'></image>
+        <view style='display:flex;flex-direction:column;padding-left:25rpx;'>
+          <view style='font-size:32rpx;color:#141414;padding-top:10rpx;'>{{item.name}}</view>
+          <view style='font-size:28rpx;color:#282828;padding-top:10rpx;'>{{item.introduction}}</view>
+        </view>
+        <view class="body-view">
+          <switch bindchange="switch1Change" data-teacherId="{{item.id}}" />
+        </view>
+      </view>
+
+    </scroll-view>
+
+  </view>
+  <view class='save' catchtap='onCommitTap'>提交</view>
+
+</view>

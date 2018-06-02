@@ -1,0 +1,24 @@
+<view class='registerContainer'>
+  <view>
+    <view class='phone'>
+      <image style='width:60rpx;height:60rpx;' src='/images/icons/my.png'></image>
+      <view class='inputPhone'>
+        <input class="input" type="number" maxlength="11" placeholder="手机号" bindinput="phoneInput" value="{{phone}}" />
+      </view>
+    </view>
+
+    <view class='accessNum'>
+      <view class="{{getCode?'get02':'get'}}" catchtap='getSmsCode'>{{tips}}</view>
+      <image style='width:60rpx;height:60rpx;margin-top:20rpx;' src='/images/icons/access.png'></image>
+      <view class='inputPhone'>
+        <input class="inputAccess" placeholder="验证码" bindinput="accessInput" value="{{access}}" />
+      </view>
+    </view>
+  </view>
+  <view class='register'>
+    <view catchtap='onLoginTap'>登录</view>
+
+  </view>
+  <navigator class='login' url="../register/register">新用户注册</navigator>
+  <footer></footer>
+</view>

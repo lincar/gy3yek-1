@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "教学互动",
+    "navigationBarBackgroundColor": "#0068aa",
+    "navigationBarTextStyle": "white",
+    "usingComponents": {
+      "footer": "/components/footer/footer"
+    }
+}

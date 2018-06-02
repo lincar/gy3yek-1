@@ -1,0 +1,15 @@
+<view class="fenxiang-box">
+  <!-- <image bindtap="show" src="/images/icons/call.png" class="fenxiang-btn"></image> -->
+  <button bindtap="show">测试弹窗</button>
+</view>
+
+
+
+<view class="modal-box" hidden="{{flag}}" bindtap="hide">
+  <view class="modal-body">
+    <view class="modal-content">
+      <button bindtap="hide">退出登录</button>
+      <button class="cancel" bindtap="hide">取消</button>
+    </view>
+  </view>
+</view>

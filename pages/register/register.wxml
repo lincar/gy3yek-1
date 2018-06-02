@@ -1,0 +1,45 @@
+<view class='registerContainer'>
+  <view>
+    <view class='phone'>
+      <image style='width:60rpx;height:60rpx;' src='/images/icons/my.png'></image>
+      <view class='inputPhone'>
+        <input class="input" placeholder="姓名" bindblur="nameInput" value="{{name}}" />
+      </view>
+    </view>
+
+    <view class='number'>
+      <image style='width:60rpx;height:60rpx;' src='/images/icons/number.png'></image>
+      <view class='inputPhone'>
+        <input class="input" type="number" placeholder="学号" bindblur="numberInput" value="{{number}}" />
+      </view>
+    </view>
+    <view class='number'>
+      <image style='width:60rpx;height:60rpx;' src='/images/icons/phone.png'></image>
+      <view class='inputPhone'>
+        <input class="input" type="number" maxlength="11" placeholder="手机号" bindblur="phoneInput" value="{{phone}}" />
+      </view>
+    </view>
+
+    <view class='accessNum'>
+      <view class="{{getCode?'get02':'get'}}" catchtap='getSmsCode' >{{tips}}</view>
+      <image style='width:60rpx;height:60rpx;margin-top:20rpx;' src='/images/icons/access.png'></image>
+      <view class='inputPhone'>
+        <input class="inputAccess" placeholder="验证码" bindblur="accessInput" value="{{access}}" />
+      </view>
+    </view>
+  </view>
+ 
+     <view class='number'>
+      <image style='width:60rpx;height:60rpx;' src='/images/icons/yao.png'></image>
+      <view class='inputPhone'>
+        <input class="input" type="number" placeholder="邀请码" bindinput="invitationInput" value="{{invitation}}" />
+      </view>
+    </view>
+
+  <view class='register' catchtap='onRegisterTap'>
+    <view> 注册并登录</view>
+    <!-- <view style='position:absolute;color:#2fc7e8;margin:30rpx 160rpx;font-size:30rpx;color:red;font-weight:390;border:1rpx solid red;padding:5rpx 15rpx;border-radius:5rpx;'>注册</view> -->
+  </view>
+
+<footer></footer>
+</view>

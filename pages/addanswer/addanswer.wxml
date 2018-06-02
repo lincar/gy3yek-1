@@ -1,0 +1,34 @@
+<view class='topContainer'>
+  <view class='classify'>
+    <view class='choose'>选择</view>
+    <view class='chooseClassify'>第七章|第二节</view>
+  </view>
+
+  <view class='body'>
+    <!-- <view class='titleInput'>
+      <input class="input" placeholder="输入标题" bindblur="titleInput" value="{{title}}" />
+    </view> -->
+    <view class='bodyInput' style="{{showChapter?'display:none':''}}">
+      <textarea style='margin-left:10rpx;font-size: 30rpx;padding:5rpx;' bindblur="bodyInput" auto-height placeholder="输入内容" value="{{body}}" />
+    </view>
+
+
+    <view style='display:flex;flex-direction:row'>
+      <view class="weui-uploader__files" id="uploaderFiles">
+        <block wx:for="{{photos}}" wx:key="index">
+          <view class="weui-uploader__file  pre-img" bindtap="previewImage" data-index="index">
+            <a class="btn danger del mini pre-del" catchtap="deleteImg" data-index="{{index}}">
+              <image style="width:15px;height:15px;" mode="widthFix" src="/images/icons/de_w.png" />
+            </a>
+            <image class="weui-uploader__img" src="{{item.url}}" mode="aspectFill" />
+          </view>
+        </block>
+      </view>
+      <view class="weui-uploader__input-box">
+        <view class="weui-uploader__input" bindtap="chooseImage"></view>
+      </view>
+    </view>
+
+  </view>
+  <view class='next' catchtap='onNextTap'>下一步</view>
+</view>

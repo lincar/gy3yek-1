@@ -1,0 +1,112 @@
+<view class='questionsContainer'>
+  <view class='top'>
+    <view class='add'>
+      <navigator class='addQuestion' style="{{role==1?'display:none':''}}" url="../ask/ask">
+        <image class='iconImg' src='/images/icons/addblack.png'></image>
+        <text class='questxt'>添加提问</text>
+      </navigator>
+    </view>
+    <view class='reservetype'>
+      <block wx:for="{{discStatus}}" wx:for-item="item">
+        <view class='type' style="{{status==item.name?'border-bottom:3rpx solid #0068aa;color:#0068aa':''}}" catchtap='onTypeTap' data-status='{{item.name}}'>{{item.name}}</view>
+      </block>
+    </view>
+  </view>
+
+
+
+  <scroll-view scroll-y="true" style="{{showFlag== '1'?'height: 500px;':'display:none'}}">
+  <view wx-if="{{!questionList.length}}"class='empty-data'>暂无数据</view>
+    <view class='quesbody' wx:for="{{questionList}}">
+      <navigator class='check01' url="{{'../detail/detail?questionId=' + item.id+'&showValue=' + status}}}}">查看详情 >></navigator>
+      <view class='title'>
+        <view style='font-size:35rpx;font-weight:400'>标题:</view>
+        <view style='font-size:30rpx;padding:5rpx 20rpx;'>{{item.title}}</view>
+      </view>
+
+      <view class='return'>
+        <view>你的问题已经有</view>
+        <view style='color:#0068aa'>{{item.replies.length}}</view>
+        <view>条回答</view>
+      </view>
+      <view class='time'>{{item.updatedAt}}</view>
+    </view>
+  </scroll-view>
+
+  <scroll-view scroll-y="true" style="{{showFlag== '0'?'height: 500px;':'display:none'}}">
+    <view wx-if="{{!newReply.length}}" class='empty-data'>暂无数据</view>
+    <view class='quesbody' wx:for="{{newReply}}">
+      <navigator class='check' url="{{'../detail/detail?questionId=' + item.question.id + '&showValue=' + status}}}}">查看详情 >></navigator>
+      <view class='title'>
+        <view style='font-size:35rpx;font-weight:400'>标题:</view>
+        <view style='font-size:30rpx;padding:5rpx 20rpx;'>{{item.question.title}}</view>
+      </view>
+      <view class='title'>
+        <view style='font-size:35rpx;font-weight:400'>回复:</view>
+        <view style='font-size:30rpx;padding:5rpx 20rpx;'>{{item.reply.content}}</view>
+      </view>
+      <view class='title'>
+        <view style='font-size:35rpx;font-weight:400'>回复人:</view>
+        <view style='font-size:30rpx;padding:5rpx 20rpx;'>{{item.reply.custom.name}}</view>
+      </view>
+      <!-- <view class='return'>
+      <view>你的问题已经有</view>
+      <view style='color:#55dbf8'>{{item.replies.length}}</view>
+      <view>条回答</view>
+    </view> -->
+      <view class='title'>
+        <view style='font-size:35rpx;font-weight:400'>时间:</view>
+        <view style='font-size:30rpx;padding:5rpx 20rpx;'>{{item.reply.updatedAt}}</view>
+      </view>
+      <!-- <view class='time'>{{item.reply.updatedAt}}</view> -->
+    </view>
+  </scroll-view>
+
+  <scroll-view scroll-y="true" style="{{showFlag== '2'?'height: 500px;':'display:none'}}">
+  <view wx-if="{{!inviteMe.length}}"class='empty-data'>暂无数据</view>
+    <view class='quesbody' wx:for="{{inviteMe}}">
+      <navigator class='check2' url="{{'../detail/detail?questionId=' + item.id + '&showValue=' + status}}">查看详情 >></navigator>
+      <view class='title'>
+        <view style='font-size:35rpx;font-weight:400'>标题:</view>
+        <view style='font-size:30rpx;padding:5rpx 20rpx;'>{{item.title}}</view>
+      </view>
+      <view class='title'>
+        <view style='font-size:35rpx;font-weight:400'>提问人:</view>
+        <view style='font-size:30rpx;padding:5rpx 20rpx;'>{{item.custom.name}}</view>
+      </view>
+      <!-- <view class='title'>
+        <view style='font-size:35rpx;font-weight:400'>回复人:</view>
+        <view style='font-size:30rpx;padding:5rpx 20rpx;'>{{item.reply.custom.name}}</view>
+      </view> -->
+      <!-- <view class='return'>
+      <view>你的问题已经有</view>
+      <view style='color:#55dbf8'>{{item.replies.length}}</view>
+      <view>条回答</view>
+    </view> -->
+      <view class='title'>
+        <view style='font-size:35rpx;font-weight:400'>时间:</view>
+        <view style='font-size:30rpx;padding:5rpx 20rpx;'>{{item.updatedAt}}</view>
+      </view>
+      <!-- <view class='time'>{{item.reply.updatedAt}}</view> -->
+    </view>
+  </scroll-view>
+
+  <scroll-view scroll-y="true" style="{{showFlag== '3'?'height: 500px;':'display:none'}}">
+    <view wx-if="{{!toReply.length}}" class='empty-data'>暂无数据</view>
+    <view class='quesbody' wx:for="{{toReply}}">
+      <navigator class='check2' url="{{'../detail/detail?questionId=' + item.id + '&showValue=' + status}}" >查看详情 >></navigator>
+      <view class='title'>
+        <view style='font-size:35rpx;font-weight:400'>标题:</view>
+        <view style='font-size:30rpx;padding:5rpx 20rpx;'>{{item.title}}</view>
+      </view>
+      <view class='title'>
+        <view style='font-size:35rpx;font-weight:400'>提问人:</view>
+        <view style='font-size:30rpx;padding:5rpx 20rpx;'>{{item.custom.name}}</view>
+      </view>
+      <view class='title'>
+        <view style='font-size:35rpx;font-weight:400'>时间:</view>
+        <view style='font-size:30rpx;padding:5rpx 20rpx;'>{{item.updatedAt}}</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
